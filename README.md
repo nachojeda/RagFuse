@@ -2,24 +2,26 @@
 
 <div align="center">
   <!-- Replace with your project logo or team photo -->
-  <img src="src/img/langfuse_logo.png" width="400" alt="Project Logo">
+  <img src="src/img/gemini_langfuse.png" width="400" alt="Project Logo">
 </div>
 
-[![Langfuse Version](https://img.shields.io/badge/Langfuse-2.53.3-blue.svg)](https://langfuse.com)
+[![Langfuse Version](https://img.shields.io/badge/Langfuse-2.53.3-blue)](https://langfuse.com)
 [![Python Version](https://img.shields.io/badge/Python-3.10.5-green.svg?logo=python&logoColor=white)](https://www.python.org/downloads/release/python-3105/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Project Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)](https://github.com/your-username/your-project)
+[![Docker Status](https://img.shields.io/badge/Docker-Active-2496ED?logo=docker&logoColor=white)](https://hub.docker.com/r/your-username/your-project)
 
 
 ## 🚀 Quick Overview
 
-This LLMOps project leverages Langfuse 2.53.3 for comprehensive observability and evaluation of language model applications, built with Python 3.10.5.
+This LLMOps project leverages Langfuse 2.53.3 for comprehensive observability and evaluation of language model applications, built on top of Python 3.10.5.
 
 ## 📋 Prerequisites
 
 - Python 3.10.5
 - Langfuse 2.53.3
-- pip package manager
+- pip
+- Docker Desktop
 
 ## 🛠️ Installation
 
@@ -79,6 +81,8 @@ llmops-project/
 │
 ├── langfuse_run.sh
 │
+├── requirements.txt
+│
 ├── README.md
 │
 └── .env
@@ -86,12 +90,33 @@ llmops-project/
 
 ## 🧪 Getting Started
 
-### Running the Application
+To get started, it is necessary the local deployment of the Langfuse app via Docker 
+```bash
+docker compose up
+```
+Once the app is deployed, it will be accessible through [http://localhost:3000](http://localhost:3000).
 
+### Running the Application
+To run the app you need to change to the main file directory
+```bash
+cd src
+```
+and execute it via python
 ```bash
 python src/main.py
 ```
+
+To personalize the event production, you should change user and session id in the main.py file
+```python
+langfuse_context.update_current_trace(
+    user_id="Nacho Ojeda Sanchez",
+    session_id="test-20241212"
+    )
+```
+
 ## 🤝 Contributing
+
+Contributions are very welcomed. If you come across with any bug or improved feature, it will be very welcomed! To add new features follow the next steps:
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -99,13 +124,6 @@ python src/main.py
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📈 Monitoring & Observability
-
-Utilize Langfuse dashboard to:
-- Track model performance
-- Analyze trace details
-- Monitor prompt variations
-- Evaluate model outputs
 
 ## 🔒 Security
 
